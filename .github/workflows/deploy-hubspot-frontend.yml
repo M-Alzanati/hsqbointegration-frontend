@@ -29,9 +29,6 @@ jobs:
             echo "ERROR: HUBSPOT_ACCOUNT_ID or HUBSPOT_PERSONAL_ACCESS_KEY is missing. Check your workflow inputs or repository secrets." >&2
             exit 1
           fi
-      - name: Copy HubSpot config to root
-        run: cp ./hubspot-quickbook-frontend/hubspot.config.yml ./
-
       - name: Install HubSpot CLI
         run: npm install -g @hubspot/cli@latest
 
@@ -56,4 +53,4 @@ jobs:
 
       - name: Upload HubSpot project
         run: |
-          cd ./hubspot-quickbook-frontend && hs project upload --forceCreate
+          hs project upload --forceCreate
