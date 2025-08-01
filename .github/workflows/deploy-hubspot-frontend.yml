@@ -2,10 +2,6 @@ name: Deploy HubSpot Frontend
 
 on:
   workflow_dispatch:
-    inputs:
-      personal_access_key:
-        description: "HubSpot Personal Access Key (leave blank to use secret)"
-        required: false
 
 jobs:
   deploy-frontend:
@@ -14,7 +10,7 @@ jobs:
       BACKEND_API_URL: ${{ secrets.BACKEND_API_URL }}
       BACKEND_API_KEY: ${{ secrets.BACKEND_API_KEY }}
       HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
-      HUBSPOT_PERSONAL_ACCESS_KEY: ${{ github.event.inputs.personal_access_key || secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+      HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
