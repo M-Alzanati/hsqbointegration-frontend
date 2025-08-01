@@ -57,4 +57,7 @@ jobs:
 
       - name: Upload HubSpot project
         run: |
-          hs project upload --allowExistingProjects
+          hs project upload --forceCreate --account "$HUBSPOT_ACCOUNT_ID" || {
+            echo "HubSpot project upload failed. Check your configuration." >&2
+            exit 1
+          }
