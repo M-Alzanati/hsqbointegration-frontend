@@ -1,0 +1,53 @@
+defaultPortal: dres-test-account
+portals:
+  - name: developer-test-account-1
+    portalId: 146519722
+    env: prod
+    authType: personalaccesskey
+    auth:
+      tokenInfo:
+        accessToken: >-
+          COfK_fKCMxIpQlNQMl8kQEwrAhwACAkCARMXAQEBAgECAQIBDQMKAQIDBxsBAQEBQgEYqu3uRSDE25MOKO7pDDIUlnuZa5c2S32OjmKuNLpDtUO6eeQ6VkJTUDJfJEBMKwJJAAgTBgYdAQEBUSscAQEBAQ8BAQQFAQEBAQQBBQEBAQgBBgIDARAEDwEIBAEBAQEBBAEFARIJAwExAQEBBAEBAQEBAQEBQQEHWhoBQhSHTpw1vhRInr11zCqWBrxOTFj9qEoDZXUxUgBaAGABaMTbkw5wAHgA
+        expiresAt: '2025-07-21T19:04:20.623Z'
+    accountType: DEVELOPER_TEST
+    personalAccessKey: >-
+      CiRldTEtZmIyNC1mMDJmLTQ5YzUtYmNlNS05NWFlYjZiZjcxNjkQqu3uRRjE25MOKhkABeaRghNQ6YNngOWZeQ4yGbjN0JmnaItpSgNldTE
+    parentAccountId: 146519637
+  - name: quickbookinvoicedevaccount1
+    portalId: 146593394
+    env: prod
+    authType: personalaccesskey
+    auth:
+      tokenInfo:
+        accessToken: >-
+          CNTJ-4yGMxIpQlNQMl8kQEwrAhwACAkCARMXAQEBAgECAQIBDQMKAQIDBxsBAQEBQgEY8qzzRSCvn-4mKO7pDDIUrtl22orE-a1kOD6tqQSq53p8IkI6VkJTUDJfJEBMKwJJAAgTBgYdAQEBUSscAQEBAQ8BAQQFAQEBAQQBBQEBAQgBBgIDARAEDwEIBAEBAQEBBAEFARIJAwExAQEBBAEBAQEBAQEBQQEHWhoBQhS4iYo2to1ZJpPBUNtNlpVjDc3n3koDZXUxUgBaAGABaK-f7iZwAHgA
+        expiresAt: '2025-07-31T17:54:20.029Z'
+    accountType: DEVELOPER_TEST
+    personalAccessKey: >-
+      CiRldTEtZDRmMi0yZGUzLTQzN2MtOGYyNy0xYjYxYWIxM2NlODUQ8qzzRRivn-4mKhkABeaRgn9Oqg9suZLjjQbogM0AFsmaKN8kSgNldTE
+    parentAccountId: 146589430
+  - name: shoreline-building-performance
+    portalId: 23102577
+    env: prod
+    authType: personalaccesskey
+    auth:
+      tokenInfo:
+        accessToken: >-
+          CIOe_IyGMxIaQlNQMl8kQEwrAg0ACAkCFB8BEAMKAQIDBxsY8YiCCyDE25MOKO7pDDIUrru7DEIHI57J2pUZaKljGx8zSjU6K0JTUDJfJEBMKwIeAAgTBgZxK1MBBgIUBBgEAQEBAQEEAQUBEgkDATEBV1pCFDPoXi0VhlsPCs03RlqXMNHyXJbBSgNuYTFSAFoAYAFoxNuTDnAAeAA
+        expiresAt: '2025-07-31T17:54:30.821Z'
+    accountType: STANDARD
+    personalAccessKey: >-
+      CiRuYTEtMjk1ZC1mMzQ5LTQ2ZWItYWRhNi02ZWE5NTRiM2M4ZGIQ8YiCCxjE25MOKhkABeaRglpKp34u1mKW0PBGpKM_VL51uzYZSgNuYTE
+  - name: dres-test-account
+    portalId: 342246853
+    env: prod
+    authType: personalaccesskey
+    auth:
+      tokenInfo:
+        accessToken: >-
+          CMqvgY2GMxIpQlNQMl8kQEwrAhwACAkCARMXAQEBAgECAQIBDQMKAQIDBxsBAQEBQgEYxYuZowEg2_LUFiju6QwyFPXrKQuUtZ4Eam2TMSfbfGECBSiIOlZCU1AyXyRATCsCSQAIEwYGHQEBAVErHAEBAQEPAQEEBQEBAQEEAQUBAQEIAQYCAwEQBA8BCAQBAQEBAQQBBQESCQMBMQEBAQQBAQEBAQEBAUEBB1oaAUIUK0QV-G6QhdBOYWxrDUeBNWutidJKA25hM1IAWgBgAWjb8tQWcAB4AA
+        expiresAt: '2025-07-31T17:55:54.993Z'
+    accountType: DEVELOPER_TEST
+    personalAccessKey: >-
+      CiRuYTMtYzZjMS02ODhmLTQ1ZDItOGE0Zi1kN2JiZTY1NmE5YjkQxYuZowEY2_LUFioZAAXmkYLCH6-WeoaxIjwTVmd3g8N_yPHnpUoDbmEz
+    parentAccountId: 342246839

@@ -1,0 +1,16 @@
+{
+  "appFunctions": {
+    "createInvoice": {
+      "file": "createInvoice.js",
+      "secrets": ["BACKEND_API_KEY", "BACKEND_API_URL"]
+    },
+    "checkConnection": {
+      "file": "checkConnection.js",
+      "secrets": ["BACKEND_API_KEY", "BACKEND_API_URL"]
+    },
+    "getContacts": {
+      "file": "getContacts.js",
+      "secrets": ["BACKEND_API_KEY", "BACKEND_API_URL"]
+    }
+  }
+}

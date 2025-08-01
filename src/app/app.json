@@ -1,0 +1,21 @@
+{
+  "name": "QuickBooks Invoice Card App",
+  "description": "This is an example of private app that shows 2 custom cards. It demonstrates usages of QuickBooks Invoice Card and Association Table Card.",
+  "uid": "quickbooks_invoice_card_app",
+  "scopes": [
+    "crm.objects.contacts.read",
+    "crm.objects.contacts.write",
+    "crm.objects.deals.write",
+    "crm.objects.deals.read"
+  ],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/invoice-card.json"
+        }
+      ]
+    }
+  }
+}

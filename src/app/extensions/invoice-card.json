@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "uid": "quickbook_invoice_card",
+  "data": {
+    "title": "QuickBooks Invoice Card",
+    "location": "crm.record.sidebar",
+    "module": {
+      "file": "InvoiceCard.jsx"
+    },
+    "objectTypes": [{ "name": "deals" }]
+  }
+}
