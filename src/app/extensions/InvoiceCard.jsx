@@ -56,8 +56,9 @@ const InvoiceCard = ({ context }) => {
         if (response.data.connected) {
           setIsConnected(true);
 
-          if (pollingInterval !== 60000) {
-            pollingInterval = 60000;
+          // If connected, increase polling interval to 10 minutes
+          if (pollingInterval !== 600000) {
+            pollingInterval = 600000;
             clearInterval(intervalId);
             intervalId = setInterval(checkConnection, pollingInterval);
           }
