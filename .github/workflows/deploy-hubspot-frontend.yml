@@ -32,10 +32,14 @@ jobs:
       - name: Install HubSpot CLI
         run: npm install -g @hubspot/cli@latest
 
+      - name: Configure HubSpot CLI (non-interactive)
+        run: |
+          echo "Y" | hs init || true
+
       - name: Verify HubSpot CLI authentication
         run: |
           echo "Verifying HubSpot CLI authentication..."
-          hs account auth --personal-access-key "$HUBSPOT_PERSONAL_ACCESS_KEY" --account "$HUBSPOT_ACCOUNT_ID" || {
+          echo "Y" | hs account auth --personal-access-key "$HUBSPOT_PERSONAL_ACCESS_KEY" --account "$HUBSPOT_ACCOUNT_ID" || {
             echo "HubSpot CLI authentication failed. Check your credentials." >&2
             exit 1
           }
