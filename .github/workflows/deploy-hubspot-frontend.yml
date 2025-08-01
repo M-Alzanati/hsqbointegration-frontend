@@ -1,0 +1,68 @@
+name: Deploy HubSpot Frontend
+
+on:
+  workflow_dispatch:
+    inputs:
+      account_id:
+        description: "HubSpot Account ID (leave blank to use secret)"
+        required: false
+      personal_access_key:
+        description: "HubSpot Personal Access Key (leave blank to use secret)"
+        required: false
+      BACKEND_API_URL:
+        description: "Backend API URL (leave blank to use secret)"
+        required: false
+      BACKEND_API_KEY:
+        description: "Backend API Key (leave blank to use secret)"
+        required: false
+
+jobs:
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    env:
+      BACKEND_API_URL: ${{ github.event.inputs.BACKEND_API_URL || secrets.BACKEND_API_URL }}
+      BACKEND_API_KEY: ${{ github.event.inputs.BACKEND_API_KEY || secrets.BACKEND_API_KEY }}
+      HUBSPOT_ACCOUNT_ID: ${{ github.event.inputs.account_id || secrets.HUBSPOT_ACCOUNT_ID }}
+      HUBSPOT_PERSONAL_ACCESS_KEY: ${{ github.event.inputs.personal_access_key || secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print environment variables (debug)
+        run: |
+          echo "HUBSPOT_ACCOUNT_ID: $HUBSPOT_ACCOUNT_ID"
+          echo "HUBSPOT_PERSONAL_ACCESS_KEY: ${HUBSPOT_PERSONAL_ACCESS_KEY:0:4}********"
+          echo "BACKEND_API_URL: $BACKEND_API_URL"
+          echo "BACKEND_API_KEY: ${BACKEND_API_KEY:0:4}********"
+          if [ -z "$HUBSPOT_ACCOUNT_ID" ] || [ -z "$HUBSPOT_PERSONAL_ACCESS_KEY" ]; then
+            echo "ERROR: HUBSPOT_ACCOUNT_ID or HUBSPOT_PERSONAL_ACCESS_KEY is missing. Check your workflow inputs or repository secrets." >&2
+            exit 1
+          fi
+      - name: Copy HubSpot config to root
+        run: cp ./hubspot-quickbook-frontend/hubspot.config.yml ./
+
+      - name: Install HubSpot CLI
+        run: npm install -g @hubspot/cli@latest
+
+      - name: Verify HubSpot CLI authentication
+        run: |
+          echo "Verifying HubSpot CLI authentication..."
+          hs account auth --personal-access-key "$HUBSPOT_PERSONAL_ACCESS_KEY" --account "$HUBSPOT_ACCOUNT_ID" || {
+            echo "HubSpot CLI authentication failed. Check your credentials." >&2
+            exit 1
+          }
+      - name: Adding function secrets
+        run: echo "Adding BACKEND_API_URL and BACKEND_API_KEY as HubSpot secrets..."
+
+      - name: Add or update function secrets (non-interactive)
+        run: |
+          echo "$BACKEND_API_URL" | hs secrets add BACKEND_API_URL --use-env || \
+            (echo "$BACKEND_API_URL" | hs secrets update BACKEND_API_URL --use-env)
+          echo "$BACKEND_API_KEY" | hs secrets add BACKEND_API_KEY --use-env || \
+            (echo "$BACKEND_API_KEY" | hs secrets update BACKEND_API_KEY --use-env)
+      - name: About to deploy to HubSpot
+        run: echo "Starting HubSpot deploy action..."
+
+      - name: Upload HubSpot project
+        run: |
+          cd ./hubspot-quickbook-frontend && hs project upload --forceCreate
