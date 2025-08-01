@@ -3,26 +3,17 @@ name: Deploy HubSpot Frontend
 on:
   workflow_dispatch:
     inputs:
-      account_id:
-        description: "HubSpot Account ID (leave blank to use secret)"
-        required: false
       personal_access_key:
         description: "HubSpot Personal Access Key (leave blank to use secret)"
-        required: false
-      BACKEND_API_URL:
-        description: "Backend API URL (leave blank to use secret)"
-        required: false
-      BACKEND_API_KEY:
-        description: "Backend API Key (leave blank to use secret)"
         required: false
 
 jobs:
   deploy-frontend:
     runs-on: ubuntu-latest
     env:
-      BACKEND_API_URL: ${{ github.event.inputs.BACKEND_API_URL || secrets.BACKEND_API_URL }}
-      BACKEND_API_KEY: ${{ github.event.inputs.BACKEND_API_KEY || secrets.BACKEND_API_KEY }}
-      HUBSPOT_ACCOUNT_ID: ${{ github.event.inputs.account_id || secrets.HUBSPOT_ACCOUNT_ID }}
+      BACKEND_API_URL: ${{ secrets.BACKEND_API_URL }}
+      BACKEND_API_KEY: ${{ secrets.BACKEND_API_KEY }}
+      HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
       HUBSPOT_PERSONAL_ACCESS_KEY: ${{ github.event.inputs.personal_access_key || secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
     steps:
       - name: Checkout code
