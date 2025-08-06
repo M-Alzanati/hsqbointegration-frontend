@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
+import InvoiceList from "./InvoiceList";
 import {
   Button,
   Text,
@@ -16,6 +17,7 @@ const InvoiceCard = ({ context }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingLabel, setLoadingLabel] = useState("");
   const [isConnecting, setIsConnecting] = useState(false);
+
   const [isConnected, setIsConnected] = useState(false);
   const [error, setError] = useState("");
   const [status, setStatus] = useState("");
@@ -215,6 +217,11 @@ const InvoiceCard = ({ context }) => {
         </Text>
       </Box>
 
+      <InvoiceList
+        userId={context.user.id}
+        dealId={context.crm?.objectId || context.objectId}
+      />
+
       {isLoading && (
         <LoadingSpinner label={loadingLabel} showLabel={true} size="small" />
       )}
@@ -241,6 +248,7 @@ const InvoiceCard = ({ context }) => {
             </Link>
           </>
         )}
+
         {contacts.length > 0 && (
           <Dropdown
             options={contacts.map((contact) => ({
@@ -266,6 +274,7 @@ const InvoiceCard = ({ context }) => {
             })()}
           />
         )}
+
         {isConnected && (
           <Button
             onClick={handleCreateInvoice}
@@ -274,6 +283,7 @@ const InvoiceCard = ({ context }) => {
             {isLoading ? "Creating Invoice..." : "Create Invoice"}
           </Button>
         )}
+
         <Box>
           {invoiceUrl && (
             <Text format={{ fontWeight: "bold" }}>

@@ -15,7 +15,8 @@ exports.main = async (context = {}) => {
   }
 
   const checkConnectionUrl = `${backendUrl}/quickbooks/checkConnection?userId=${userId}`;
-
+  console.log("Checking QuickBooks connection:", checkConnectionUrl);
+  
   return axios
     .get(checkConnectionUrl, {
       headers: {

@@ -11,6 +11,10 @@
     "getContacts": {
       "file": "getContacts.js",
       "secrets": ["BACKEND_API_KEY", "BACKEND_API_URL"]
+    },
+    "getInvoiceList": {
+      "file": "getInvoiceList.js",
+      "secrets": ["BACKEND_API_KEY", "BACKEND_API_URL"]
     }
   }
 }
