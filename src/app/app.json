@@ -6,7 +6,9 @@
     "crm.objects.contacts.read",
     "crm.objects.contacts.write",
     "crm.objects.deals.write",
-    "crm.objects.deals.read"
+    "crm.objects.deals.read",
+    "crm.objects.quotes.read",
+    "crm.objects.quotes.write"
   ],
   "public": false,
   "extensions": {
