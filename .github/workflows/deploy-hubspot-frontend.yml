@@ -54,7 +54,7 @@ jobs:
           cd src/app/app.functions
           npm i --package-lock-only
 
-      - name: Generate package-lock.json for app.extensions
+      - name: Generate package-lock.json for extensions
         run: |
           cd src/app/extensions
           npm i --package-lock-only
